@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Game",
+            "request": "launch",
+            "mainClass": "Game",
+            "projectName": "RST Grade 12_20b8a3db"
+        }
+    ]
+}
