@@ -1,2 +1,5 @@
 {
+    "code-runner.executorMap": {
+        "java": "cd $dir && javac *.java -d ..\\bin && cd ..\\bin && java Game"
+    }
 }
