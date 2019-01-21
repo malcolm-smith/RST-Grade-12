@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,10 +10,18 @@ public class Space {
     private final ImageIcon spaceIcon = new ImageIcon("../images/ScreenshotStarfield.png");
     private final JLabel spaceLabel = new JLabel(spaceIcon);
     private JPanel panel = new JPanel();
+    private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 
     // constructor
     public Space() {
         this.initPanel();
+    }
+
+    public void drawSprites() {
+        for (Sprite sprite : sprites) {
+            sprite.x += sprite.dx;
+            sprite.y += sprite.dy;
+        }
     }
 
     // initialises the panel

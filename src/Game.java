@@ -2,23 +2,30 @@ import javax.swing.JFrame;
 
 public class Game {
 
-    private JFrame frame = new JFrame();
-    private Menu menu = new Menu();
+    public static Game g;
+    public JFrame frame = new JFrame();
+    public Menu menu = new Menu();
+    public Space space = new Space();
 
+    // constructor
     public Game() {
         this.initGUI();
     }
 
     private void initGUI() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(1000, 1000);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         frame.add(menu.getPanel());
     }
 
+    public void clearFrame() {
+        this.frame.getContentPane().removeAll();
+    }
+
     public static void main(String[] args) {
-        Game g = new Game();
+        g = new Game();
     }
 }
