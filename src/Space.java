@@ -10,11 +10,14 @@ public class Space {
     private final ImageIcon spaceIcon = new ImageIcon("../images/ScreenshotStarfield.png");
     private final JLabel spaceLabel = new JLabel(spaceIcon);
     private JPanel panel = new JPanel();
-    private ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+    public ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+    public Player player = new Player();
 
     // constructor
     public Space() {
         this.initPanel();
+        this.loadLevel();
+        // this.drawSprites();
     }
 
     public void drawSprites() {
@@ -24,9 +27,19 @@ public class Space {
         }
     }
 
+    private void loadLevel() {
+        this.sprites.add(this.player);
+        for (Sprite sprite : this.sprites) {
+            this.panel.add(sprite.model);
+        }
+        // Game.g.frame.addKeyListener(this.player.getKeyListener());
+    }
+
     // initialises the panel
     private void initPanel() {
         this.panel.setBackground(Color.black);
+        this.panel.setLayout(null);
+        this.spaceLabel.setBounds(0, 0, 800, 800);
         this.panel.add(this.spaceLabel);
     }
 

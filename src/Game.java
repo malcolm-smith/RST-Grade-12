@@ -6,6 +6,7 @@ public class Game {
     public JFrame frame = new JFrame();
     public Menu menu = new Menu();
     public Space space = new Space();
+    public boolean gameOver = false;
 
     // constructor
     public Game() {
@@ -23,6 +24,14 @@ public class Game {
 
     public void clearFrame() {
         this.frame.getContentPane().removeAll();
+    }
+
+    // game loop
+    public void run() {
+        while (gameOver != true) {
+            // move all sprites
+            space.drawSprites();
+        }
     }
 
     public static void main(String[] args) {

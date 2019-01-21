@@ -1,5 +1,9 @@
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Player extends Sprite {
 
@@ -22,7 +26,11 @@ public class Player extends Sprite {
     });
 
     public Player() {
-
+        this.model.setIcon(this.playerIcon);
+        this.model.setBackground(Color.red);
     }
 
+    public KeyListener getKeyListener() {
+        return this.keyListener;
+    }
 }
