@@ -35,8 +35,8 @@ public class Sprite {
         model.setBounds(x, y, l, w);
     }
 
-    public void shoot() {
-        Game.g.space.sprites.add(new Bullet(1, this.getX(), this.getY()));
+    public void playerShoot() {
+        new Bullet(1, this.getX(), this.getY());
     }
 
     public void moveLeft() {

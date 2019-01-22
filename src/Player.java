@@ -31,7 +31,7 @@ public class Player extends Sprite {
         } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Left")) {
             moveLeft();
         } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Space")) {
-            shoot();
+            playerShoot();
         }
     }
 

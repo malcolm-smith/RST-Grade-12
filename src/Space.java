@@ -14,7 +14,7 @@ public class Space {
     private JPanel panel = new JPanel();
     public ArrayList<Sprite> sprites = new ArrayList<Sprite>();
     public Player player = new Player();
-    private JLayeredPane jLayeredPane = new JLayeredPane();
+    public JLayeredPane jLayeredPane = new JLayeredPane();
 
     // constructor
     public Space() {
@@ -33,6 +33,9 @@ public class Space {
     }
 
     public void drawSprites() {
+        ArrayList<Sprite> removeList = new ArrayList<Sprite>();
+        ArrayList<JLabel> modelremoveList = new ArrayList<JLabel>();
+
         for (Sprite sprite : this.sprites) {
             sprite.setX(sprite.getX() + sprite.getDX());
             sprite.setY(sprite.getY() + sprite.getDY());
@@ -40,8 +43,14 @@ public class Space {
             // System.out.print(sprite.getModel().getY());
 
             if (sprite.getY() < 0 || sprite.getY() > 800) {
-                sprites.remove(sprite);
+                System.out.println("out of bounds");
+                removeList.add(sprite);
+                modelremoveList.add(sprite.model);
             }
+        }
+        this.sprites.removeAll(removeList);
+        for (JLabel label : modelremoveList) {
+            this.jLayeredPane.remove(label);
         }
     }
 
@@ -60,7 +69,7 @@ public class Space {
         this.panel.setBackground(Color.BLUE);
         this.panel.setLayout(new BorderLayout());
         this.jLayeredPane.setOpaque(true);
-        this.jLayeredPane.setBackground(Color.lightGray);
+        this.jLayeredPane.setBackground(Color.black);
         this.panel.add(this.jLayeredPane);
         this.spaceLabel.setBounds(0, 0, Game.frameLength, Game.frameWidth);
         this.jLayeredPane.add(this.spaceLabel, new Integer(1));
