@@ -12,6 +12,6 @@ public class Bullet extends Sprite {
         }
         this.setX(x);
         this.setY(y);
-        System.out.println("bullet");
+        System.out.println("bullet fired");
     }
 }
