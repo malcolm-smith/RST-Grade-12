@@ -20,11 +20,8 @@ public class Menu {
         @Override
         public void actionPerformed(ActionEvent e) {
             // if the user selects the start game button
-            if (((JButton) e.getSource()).getText().equals("start")) {
-                Game.g.clearFrame();
-                Game.g.frame.add(Game.g.space.getPanel());
-                Game.g.frame.getContentPane().revalidate();
-                Game.g.frame.getContentPane().repaint();
+            if (((JButton) e.getSource()).getText().equals("START")) {
+                startGame();
             }
         }
     });
@@ -33,6 +30,15 @@ public class Menu {
 
     public Menu() {
         this.initPanel();
+    }
+
+    public void startGame() {
+        Game.g.clearFrame();
+        Game.frame.add(Game.g.space.getPanel());
+        Game.frame.getContentPane().revalidate();
+        Game.frame.getContentPane().repaint();
+        Game.g.space.startGame();
+        Game.g.run();
     }
 
     private void initPanel() {
@@ -48,7 +54,8 @@ public class Menu {
             this.panel.add(this.buttons[i]);
         }
 
-        this.buttons[0].setText("start");
+        this.buttons[0].setText("START");
+        this.buttons[1].setText("HIGH SCORES");
     }
 
     public JPanel getPanel() {
