@@ -1,10 +1,6 @@
-import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class Player extends Sprite {
 

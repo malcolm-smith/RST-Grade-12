@@ -1,8 +1,3 @@
-import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -24,8 +19,6 @@ public class Sprite {
 
     protected int speed = 2;
     protected String direction = "NONE";
-
-    public boolean shooting;
 
     public Sprite() {
         createSprite();
@@ -122,39 +115,7 @@ public class Sprite {
         return this.model;
     }
 
-    // both methods can be used for when the player and the obstacles are the same
-    // size
-    // sorry if you're trying to understand this
-
-    // this method is for when the player is larger than the obstacle(s)
-    public boolean checkCollision(int a, int b, int c, int d) {
-        if ((x <= a && a <= (x + l)) && (y <= b && b <= (y + w))) {
-            return true;
-        } else if ((x <= (a + c) && (a + c) <= (x + l)) && (y <= b && b <= (y + w))) {
-            return true;
-        } else if ((x <= (a + c) && (a + c) <= (x + l)) && (y <= (b + d) && (b + d) <= (y + w))) {
-            return true;
-        } else if ((x <= a && a <= (x + l)) && (y <= (b + d) && (b + d) <= (y + w))) {
-            return true;
-        }
-        return false;
-    }
-
-    // this method is used for when the player is smaller than the obstacle(s)
-    public boolean checkCol(int a, int b, int c, int d) {
-        if ((a <= x && x <= (a + c)) && (b <= y && y <= (b + d))) {
-            return true;
-        } else if ((a <= (x + l) && (x + l) <= (a + c)) && (b <= y && y <= (b + d))) {
-            return true;
-        } else if ((a <= (x + l) && (x + l) <= (a + c)) && (b <= (y + w) && (y + w) <= (b + d))) {
-            return true;
-        } else if ((a <= x && x <= (a + c)) && (b <= (y + w) && (y + w) <= (b + d))) {
-            return true;
-        }
-        return false;
-    }
-
-    // this method combines both the checkCollision and the checkCol methods
+    // checks for collision between objects
     public boolean check(int a, int b, int c, int d) {
         if ((x <= a && a <= (x + l)) && (y <= b && b <= (y + w))
                 || ((a <= x && x <= (a + c)) && (b <= y && y <= (b + d)))) {

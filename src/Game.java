@@ -29,12 +29,7 @@ public class Game {
             // this while loop is essentially the game loop, and runs every 1000ms
             while (true) {
                 if (counter == randVal) {
-                    if (random.nextInt(2) + 1 == 1) {
-                        // 1/30 chance for the Alien to be able to shoot ^^
-                        space.sprites.add(new Alien(random.nextInt(750) + 1, 50, true));
-                    } else {
-                        space.sprites.add(new Alien(random.nextInt(750) + 1, 50, true));
-                    }
+                    space.sprites.add(new Alien(random.nextInt(750) + 1, 50));
 
                     difficulty += 2;
                     if (difficulty > 200) {

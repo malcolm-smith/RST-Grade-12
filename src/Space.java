@@ -44,9 +44,6 @@ public class Space {
     public void drawSprites() {
         ArrayList<Sprite> removeList = new ArrayList<Sprite>();
         ArrayList<JLabel> modelremoveList = new ArrayList<JLabel>();
-        boolean createBullet = false;
-        int xx = 0;
-        int yy = 0;
 
         for (Sprite sprite : this.sprites) {
             sprite.setX(sprite.getX() + sprite.getDX());
@@ -96,14 +93,6 @@ public class Space {
                     Space.counter = 0;
                 } else {
                     Space.counter++;
-                }
-                if (sprite.shooting == true) {
-                    if (Game.random.nextInt(2) + 1 == 1) {
-                        createBullet = true;
-                        xx = sprite.getX();
-                        yy = sprite.getY();
-                    }
-                    // new Bullet(sprite.getX(), sprite.getY(), 0);
                 }
 
                 // see if Alien has run into the player, ending the game

@@ -1,11 +1,8 @@
 import java.awt.Color;
 
-import javax.swing.JLabel;
-
 public class Alien extends Sprite {
 
-    public Alien(int x, int y, boolean shooting) {
-        this.shooting = shooting;
+    public Alien(int x, int y) {
         this.speed = 1;
         this.setX(x);
         this.setY(y);
