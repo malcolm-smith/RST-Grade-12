@@ -11,8 +11,7 @@ public class Sprite {
     protected JLabel model = new JLabel();
     protected ImageIcon playerIcon = new ImageIcon(
             "../images/168-1683647_space-invaders-free-icon-list-of-space-invaders-video-games.png");
-    protected ImageIcon alienIcon = new ImageIcon(
-            "../images/Space-Invaders-Alien-PNG-Image-with-Transparent-Background.png");
+    protected ImageIcon alienIcon = new ImageIcon("../images/Space-Invaders-Free-PNG-Image.png");
     protected boolean exists = true;
 
     protected int x = 50;
@@ -26,6 +25,8 @@ public class Sprite {
     protected int speed = 2;
     protected String direction = "NONE";
 
+    public boolean shooting;
+
     public Sprite() {
         createSprite();
     }
@@ -37,6 +38,10 @@ public class Sprite {
 
     public void playerShoot() {
         new Bullet(1, this.getX(), this.getY());
+    }
+
+    public void alienShoot() {
+        new Bullet(0, this.getX(), this.getY());
     }
 
     public void moveLeft() {

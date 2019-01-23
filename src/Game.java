@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import javax.swing.JFrame;
 
 public class Game {
@@ -12,21 +14,50 @@ public class Game {
     public Menu menu = new Menu();
     public Space space = new Space();
     public boolean gameOver = false;
+    public static Random random = new Random();
+    public static int difficulty = 0;
+    public static ScoreSystem scoreSystem = new ScoreSystem();
 
-    Thread t = new Thread(new Runnable() {
+    public Thread thread = new Thread(new Runnable() {
 
         @Override
         public void run() {
             space.player.moveRight();
+            int counter = 0;
+            int randVal = 300;
+            // space.sprites.add(new Alien(50, 50));
+            // this while loop is essentially the game loop, and runs every 1000ms
             while (true) {
-                try {
-                    if (space.player.getX() < 30) {
-                        space.player.moveRight();
-                    } else if (space.player.getX() > 725) {
-                        space.player.moveLeft();
+                if (counter == randVal) {
+                    if (random.nextInt(2) + 1 == 1) {
+                        // 1/30 chance for the Alien to be able to shoot ^^
+                        space.sprites.add(new Alien(random.nextInt(750) + 1, 50, true));
+                    } else {
+                        space.sprites.add(new Alien(random.nextInt(750) + 1, 50, true));
                     }
-                    space.drawSprites();
-                    frame.repaint(); // redraws everything on the frame
+
+                    difficulty += 2;
+                    if (difficulty > 200) {
+                        difficulty = 100;
+                    }
+                    counter = 0;
+                    // the difficulty counter is used to increase the spawn rate of Aliens over
+                    // time, making the game more difficult as it progresses
+                    randVal = random.nextInt(100) + (200 - difficulty);
+                }
+                counter++;
+                // System.out.println(counter);
+                // prevent players from going out of bounds by turning them the other direction
+                if (space.player.getX() < 30) {
+                    space.player.moveRight();
+                } else if (space.player.getX() > 725) {
+                    space.player.moveLeft();
+                }
+
+                space.drawSprites();
+                frame.repaint(); // redraws everything on the frame
+
+                try {
                     Thread.sleep(Game.delay);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
@@ -55,7 +86,7 @@ public class Game {
 
     // game loop
     public void run() {
-        t.start(); // starts the thread
+        thread.start(); // starts the thread
     }
 
     public static void main(String[] args) {

@@ -13,6 +13,7 @@ public class Menu {
 
     private JPanel panel = new JPanel();
     private JButton[] buttons = new JButton[3];
+    private String instructions = "CHANGE X DIRECTION:  LEFT AND RIGHT ARROW KEYS\nSHOOT:  SPACEBAR";
 
     // logic for what happens when a button is clicked
     private ActionListener aListener = (new ActionListener() {
@@ -22,6 +23,10 @@ public class Menu {
             // if the user selects the start game button
             if (((JButton) e.getSource()).getText().equals("START")) {
                 startGame();
+            } else if (((JButton) e.getSource()).getText().equals("HIGH SCORES")) {
+                Game.scoreSystem.showHighScores();
+            } else if (((JButton) e.getSource()).getText().equals("INSTRUCTIONS")) {
+                JOptionPane.showMessageDialog(null, instructions);
             }
         }
     });
@@ -56,6 +61,7 @@ public class Menu {
 
         this.buttons[0].setText("START");
         this.buttons[1].setText("HIGH SCORES");
+        this.buttons[2].setText("INSTRUCTIONS");
     }
 
     public JPanel getPanel() {

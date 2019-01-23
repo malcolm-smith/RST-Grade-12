@@ -16,6 +16,7 @@ public class Player extends Sprite {
     });
 
     public Player() {
+        this.speed = 3;
         this.setX(50);
         this.setY(700);
         this.model.setIcon(this.playerIcon);
@@ -34,16 +35,4 @@ public class Player extends Sprite {
             playerShoot();
         }
     }
-
-    // public void move(KeyEvent e) {
-    // if (KeyEvent.getKeyText(e.getKeyCode()).equals("Up")) {
-    // moveUp();
-    // } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Right")) {
-    // moveRight();
-    // } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Down")) {
-    // moveDown();
-    // } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Left")) {
-    // moveLeft();
-    // }
-    // }
 }
