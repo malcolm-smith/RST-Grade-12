@@ -1,0 +1,18 @@
+WRITTEN PROPOSAL:
+
+My proposal for the project is a replica / parody of the famous Space Invaders game. The game will feature a main menu where you can choose to start a game, view high scores, and to also view the controls / instructions of the game. If the player chooses to view the high scores, the player will be shown the top 5 high scores, saved from a local text file. The scores will be encrypted in the text file and then extracted by decrypting them, then displaying them to the user. The option to start a game will place the user in a space environment, (in 2D), where there will be a spaceship that the user is able to move left and right across the screen. As time progresses, Aliens will be spawned above the player, and will move randomly towads the player. The player will have to avoid the Aliens in order to prevent a game over screen, where a score will be shown, then saved to the text file. The player's score is incremented based upon how many Aliens the player manages to shoot down. The player is able to shoot by tapping the spacebar at any time. As time progresses, the difficulty increases. Aliens will spawn more and more frequently, until the player is overwhelmed. 
+
+PSEUDOCODE:
+
+This pseudocode describes how all the sprites (characters, objects) shown on the screen will have their position updated, and how the program will detect any collisions between these objects.
+
+while true:
+    for each object in the level:
+        position = position + displacement x, displacement y
+        for each other object in the level:
+            if the objects are a bullet and an alien, remove bullet and alien from level
+            else if the objects are a player and an alien, game over
+
+        if the object is out of bounds, remove from level
+
+displacement x, and y are going to be changed randomly in the case of the alien, and the user will change the player's displacement by pressing the arrow keys
