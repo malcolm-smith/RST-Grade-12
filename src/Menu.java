@@ -31,10 +31,12 @@ public class Menu {
 
     private final int NUMBER_OF_ITEMS = 3; // number of buttons to click in the menu
 
+    // constructor
     public Menu() {
         this.initPanel();
     }
 
+    // removes the menu from the frame and displays the game (space) panel
     public void startGame() {
         Game.g.clearFrame();
         Game.frame.add(Game.g.space.getPanel());
@@ -44,6 +46,7 @@ public class Menu {
         Game.g.run();
     }
 
+    // sets up the menu, and how it looks
     private void initPanel() {
         this.panel.setBackground(Color.black);
         this.panel.setOpaque(true);

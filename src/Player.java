@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 
 public class Player extends Sprite {
 
+    // what happens when the user presses a key
     protected KeyListener keyListener = (new KeyAdapter() {
         public void keyPressed(KeyEvent e) {
             System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
@@ -11,6 +12,7 @@ public class Player extends Sprite {
         }
     });
 
+    // constructor
     public Player() {
         this.speed = 3;
         this.setX(50);
@@ -18,10 +20,7 @@ public class Player extends Sprite {
         this.model.setIcon(this.playerIcon);
     }
 
-    public KeyListener getKeyListener() {
-        return this.keyListener;
-    }
-
+    // moves the player in a direction depending on what key is pressed
     public void move(KeyEvent e) {
         if (KeyEvent.getKeyText(e.getKeyCode()).equals("Right")) {
             moveRight();
@@ -30,5 +29,9 @@ public class Player extends Sprite {
         } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("Space")) {
             playerShoot();
         }
+    }
+
+    public KeyListener getKeyListener() {
+        return this.keyListener;
     }
 }

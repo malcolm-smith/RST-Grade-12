@@ -9,6 +9,8 @@ public class Alien extends Sprite {
         this.moveDown();
         this.model.setIcon(this.alienIcon);
         this.model.setBackground(Color.green);
+
+        // adds itself to the sprite list in the game
         Game.g.space.jLayeredPane.add(this.model, new Integer(2));
     }
 }

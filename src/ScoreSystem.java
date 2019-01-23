@@ -9,19 +9,23 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+// this class is used to keep track and maintain all scores 
 public class ScoreSystem {
 
     public final String filePath = "../src/scores.txt";
     public Scanner in;
 
+    // constructor
     public ScoreSystem() {
         try {
             in = new Scanner(new File(this.filePath));
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) { // if the file is not found
             e.printStackTrace();
+            System.exit(0);
         }
     }
 
+    // shows the highest five scores in the scores.txt file
     public void showHighScores() {
         int[] array = sortScores(readScores());
         String str = "";
@@ -31,12 +35,14 @@ public class ScoreSystem {
         JOptionPane.showMessageDialog(null, str);
     }
 
+    // sorts the scores in descending order
     public int[] sortScores(int[] arr) {
         // using merge sort to sort ALL the high scores, RECURSION
         sort(arr, 0, arr.length - 1);
         return arr;
     }
 
+    // reads the scores from a file
     public int[] readScores() {
         ArrayList<Integer> list = new ArrayList<Integer>();
         while (in.hasNext()) {
@@ -49,20 +55,19 @@ public class ScoreSystem {
         return arr;
     }
 
+    // appends a score to the file, for future use
     public void addScore(int score) {
         PrintWriter printWriter;
         try {
             printWriter = new PrintWriter(new BufferedWriter(new FileWriter(filePath, true)));
             printWriter.println(Integer.toString(score));
             printWriter.close();
-            System.out.println(score + "sdfsdfsdf");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    // merge sort methods
+    // merge sort methods, are recursive
     private void merge(int arr[], int l, int m, int r) {
 
         int n1 = m - l + 1;

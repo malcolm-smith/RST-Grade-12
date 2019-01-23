@@ -7,6 +7,8 @@ public class Game {
     public static int frameLength = 800;
     public static int frameWidth = 800;
 
+    // how long it takes for the game to refresh all positions of objects
+    // (lower -->more fps)
     public static final int delay = 10;
 
     public static Game g;
@@ -14,10 +16,14 @@ public class Game {
     public Menu menu = new Menu();
     public Space space = new Space();
     public boolean gameOver = false;
+
+    // tools used in the game loop
     public static Random random = new Random();
     public static int difficulty = 0;
     public static ScoreSystem scoreSystem = new ScoreSystem();
 
+    // thread must be run in paralell to the rest of the program, otherwise graphics
+    // will not refresh
     public Thread thread = new Thread(new Runnable() {
 
         @Override
@@ -28,12 +34,15 @@ public class Game {
             // space.sprites.add(new Alien(50, 50));
             // this while loop is essentially the game loop, and runs every 1000ms
             while (true) {
+                // adds an alien at a random interval
                 if (counter == randVal) {
+                    // adds an alien to the game in a random location at the top of the screen
                     space.sprites.add(new Alien(random.nextInt(750) + 1, 50));
 
+                    // increases spawn rate of aliens
                     difficulty += 2;
-                    if (difficulty > 200) {
-                        difficulty = 100;
+                    if (difficulty > 300) {
+                        difficulty = 200;
                     }
                     counter = 0;
                     // the difficulty counter is used to increase the spawn rate of Aliens over
@@ -41,16 +50,17 @@ public class Game {
                     randVal = random.nextInt(100) + (200 - difficulty);
                 }
                 counter++;
-                // System.out.println(counter);
-                // prevent players from going out of bounds by turning them the other direction
+                // prevent players from going out of bounds (offscreen) by turning them the
+                // other direction when border is reached
                 if (space.player.getX() < 30) {
                     space.player.moveRight();
                 } else if (space.player.getX() > 725) {
                     space.player.moveLeft();
                 }
 
+                // redraws everything on the frame
                 space.drawSprites();
-                frame.repaint(); // redraws everything on the frame
+                frame.repaint();
 
                 try {
                     Thread.sleep(Game.delay);
@@ -79,11 +89,12 @@ public class Game {
         Game.frame.getContentPane().removeAll();
     }
 
-    // game loop
+    // starts the game loop
     public void run() {
         thread.start(); // starts the thread
     }
 
+    // main method
     public static void main(String[] args) {
         g = new Game();
     }
